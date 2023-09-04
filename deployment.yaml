@@ -1,35 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
+  namespace: camunda8-dev
   labels:
-    app: demo
-  name: demo
+    app: camunda8-process-demo
+  name: camunda8-process-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demo
+      app: camunda8-process-demo
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: demo
+        app: camunda8-process-demo
     spec:
       containers:
-      - image: camunda8-demo
-        name: camunda8-demo
+      - image: camunda8-process-demo:0.0.2-SNAPSHOT
+        name: camunda8-process-demo
         imagePullPolicy: Never
         resources: {}
-status: {}
+        env:
+          - name: ZEEBE_CLIENT_BROKER_GATEWAYADDRESS
+            value: camunda-zeebe-gateway:26500
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   labels:
     app: demo
   name: demo
@@ -40,7 +40,7 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: demo
+    app: camunda8-process-demo
   type: ClusterIP
 status:
   loadBalancer: {}

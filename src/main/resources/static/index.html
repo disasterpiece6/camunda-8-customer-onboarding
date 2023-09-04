@@ -3,7 +3,7 @@
 <body>
   <h1>Awesome website that allows to open a new bank account</h1>
 
-  <p>Typically, some data would be collected here...</p>
+  <p>Typically, some customer data would be collected here:</p>
 
   <button onclick="submitNewCustomerOrder()">Open bank account</button>
   
@@ -11,7 +11,7 @@
 </body>
 
 	<script type="text/javascript">
-    var count = 0;
+    let count = 0;
 		function submitNewCustomerOrder() {
 			 $.ajax({
               url: "./customer",
@@ -19,7 +19,7 @@
               data: {}
           }).done(function(result) {
             count = count + 1;
-            $('#thanks').html('Bank account application successfuly submitted. #' + count);
+            $('#thanks').html('<p>Bank account application successfully submitted. #' + count + '</p>');
           })
 		}
 	</script>

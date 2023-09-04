@@ -17,7 +17,7 @@ public class ScoringAdapter {
     public Map<String, Object> scoreCustomer() {
         HashMap<String, Object> resultVariables = new HashMap<>();
 
-        logger.info("score...");
+        logger.info("Scoring the customer ...");
         resultVariables.put("score", 42);
 
         return resultVariables;

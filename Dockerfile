@@ -9,14 +9,12 @@ WORKDIR ${WORK_DIR}
 
 RUN mvn clean install
 
-# RUN cp ${WORK_DIR}/target/customer-onboarding-camunda-8-springboot-0.0.1-SNAPSHOT.jar \
-# ${WORK_DIR}/customer-onboarding-camunda-8-springboot-0.0.1-SNAPSHOT.jar
-
-## debug
+## debug: list build folder
 RUN ls -la /build
 
-# FROM amazoncorretto:17
+
 FROM gcr.io/distroless/java17-debian11
+# FROM amazoncorretto:17
 
 WORKDIR /
 COPY --from=build /build/target/process-service.jar .
