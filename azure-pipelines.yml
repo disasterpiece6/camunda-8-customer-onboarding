@@ -44,7 +44,7 @@ stages:
             inputs:
               command: build
               # arguments: '--platform linux/arm64'
-              Dockerfile: /Dockerfile
+              Dockerfile: Dockerfile
               buildContext: '**'
               containerRegistry: 'Phactum-Dockerregistry'
               repository: "camunda-8-example-customer-onboarding"
