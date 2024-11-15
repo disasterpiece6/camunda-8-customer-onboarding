@@ -1,0 +1,59 @@
+trigger:
+  - main
+
+name: camunda-8-example-customer-onboarding
+
+variables:
+  MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
+  MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER) -Xmx1024m'
+
+
+stages:
+  - stage: demo
+    displayName: Build demo
+    jobs:
+      - job: demo
+        steps:
+
+          - task: Cache@2
+            inputs:
+              key: 'maven | "$(Agent.OS)" | **/pom.xml'
+              restoreKeys: |
+                maven | "$(Agent.OS)"
+                maven
+              path: $(MAVEN_CACHE_FOLDER)
+            displayName: Cache Maven local repo
+
+          - task: Maven@4
+            inputs:
+              mavenPomFile: '/pom.xml'
+              mavenOptions: '$(MAVEN_OPTS)'
+              goals: "package"
+              options: '-U -B -P build-pipeline'
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              javaHomeOption: 'JDKVersion'
+              jdkVersionOption: 1.17
+              mavenVersionOption: 'Default'
+              mavenAuthenticateFeed: false
+              effectivePomSkip: true
+              sonarQubeRunAnalysis: false
+
+          - task: Docker@2
+            displayName: Build the workflow docker image
+            inputs:
+              command: build
+              # arguments: '--platform linux/arm64'
+              Dockerfile: /Dockerfile
+              buildContext: '**'
+              containerRegistry: 'Phactum-Dockerregistry'
+              repository: "camunda-8-example-customer-onboarding"
+              tags: "$(Build.BuildId),latest"
+
+          - task: Docker@2
+            displayName: Push docker image
+            inputs:
+              command: push
+              containerRegistry: 'Phactum-Dockerregistry'
+              repository: "camunda-8-example-customer-onboarding"
+              tags: "$(Build.BuildId),latest"

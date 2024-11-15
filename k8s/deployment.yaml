@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: camunda-8-example-customer-onboarding
+  labels:
+    app: camunda-8-example-customer-onboarding
+  name: camunda-8-example-customer-onboarding
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: camunda-8-example-customer-onboarding
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: camunda-8-example-customer-onboarding
+    spec:
+      imagePullSecrets:
+        - name: phactum-azure-imagepull
+      containers:
+        - image: phactum.azurecr.io/camunda-8-example-customer-onboarding:latest
+          name: camunda-8-example-customer-onboarding
+          imagePullPolicy: Always # IfNotPresent
+
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "50m"
+            limits:
+              memory: "512Mi"
+
+          ## config
+          env:
+            - name: ZEEBE_CLIENT_BROKER_GATEWAYADDRESS
+              value: camunda-platform-zeebe-gateway.camunda-labs.svc.cluster.local:26500
