@@ -67,5 +67,5 @@ stages:
             displayName: Deploy K8s manifests
             inputs:
               kubernetesServiceConnection: aks-lab
-              namespace: camunda-8-example-customer-onboarding
+              namespace: camunda-demos
               manifests: $(System.DefaultWorkingDirectory)/k8s/*
