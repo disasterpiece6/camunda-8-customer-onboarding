@@ -57,3 +57,15 @@ stages:
               containerRegistry: 'Phactum-Dockerregistry'
               repository: "camunda-8-example-customer-onboarding"
               tags: "$(Build.BuildId),latest"
+
+  - stage: deploy
+    displayName: deploy kubernetes (EKS)
+    jobs:
+      - job: deployment
+        steps:
+          - task: KubernetesManifest@0
+            displayName: Deploy K8s manifests
+            inputs:
+              kubernetesServiceConnection: aks-lab
+              namespace: camunda-8-example-customer-onboarding
+              manifests: $(System.DefaultWorkingDirectory)/k8s/*

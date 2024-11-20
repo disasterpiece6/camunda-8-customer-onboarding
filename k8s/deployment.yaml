@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: camunda-8-example-customer-onboarding
+  namespace: camunda-demos
   labels:
     app: camunda-8-example-customer-onboarding
   name: camunda-8-example-customer-onboarding
@@ -22,7 +22,7 @@ spec:
       containers:
         - image: phactum.azurecr.io/camunda-8-example-customer-onboarding:latest
           name: camunda-8-example-customer-onboarding
-          imagePullPolicy: Always # IfNotPresent
+          imagePullPolicy: Always
 
           resources:
             requests:

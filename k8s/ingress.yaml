@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: onboarding-ingress
+  annotations:
+    cert-manager.io/issuer: "letsencrypt-labs"
+spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
+  tls:
+    - hosts:
+        - camunda-8-example-customer-onboarding.labs.phactum.at
+      secretName: insurance-workflow-cert-secret
+  rules:
+    - host: camunda-8-example-customer-onboarding.labs.phactum.at
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: onboarding-service
+                port:
+                  number: 8080
