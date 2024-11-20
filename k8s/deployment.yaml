@@ -34,7 +34,7 @@ spec:
           ## config
           env:
             - name: ZEEBE_CLIENT_BROKER_GATEWAYADDRESS
-              value: https://camunda-platform-zeebe-gateway.camunda-labs.svc.cluster.local:26500
+              value: http://camunda-platform-zeebe-gateway.camunda-labs.svc.cluster.local:26500
             - name: CAMUNDA_CLIENT_AUTH_CLIENT_SECRET
               value: 3hjeaxrh5i
             - name: CAMUNDA_CLIENT_AUTH_ISSUER
