@@ -38,7 +38,7 @@
 			<artifactId>spring-boot-starter-camunda-sdk</artifactId>
 			<version>${zeebe.version}</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -48,7 +48,7 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency> -->
 	<!--    <dependency>
 			<groupId>io.camunda.spring</groupId>
 			<artifactId>spring-boot-starter-camunda-test-testcontainer</artifactId>
