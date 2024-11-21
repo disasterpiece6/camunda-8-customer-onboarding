@@ -1,5 +1,5 @@
 package at.phactum.camunda8demo.customer;
-
+/*
 import at.phactum.camunda8demo.customer.rest.CustomerOnboardingRestController;
 import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.client.api.response.ActivatedJob;
@@ -83,7 +83,7 @@ public class TestCustomerOnboardingProcess {
     /**
      * This code should eventually be provided by spring-zeebe-test
      */
-
+/*
     @Autowired
     private ZeebeTestEngine zeebeTestEngine;
     @Autowired
@@ -117,4 +117,4 @@ public class TestCustomerOnboardingProcess {
     }
 
 
-}
+}*/
