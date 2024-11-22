@@ -40,7 +40,7 @@ stages:
               sonarQubeRunAnalysis: false
 
           - task: Docker@2
-            displayName: Build the workflow docker image
+            displayName: Build the demo docker image
             inputs:
               command: build
               # arguments: '--platform linux/arm64'
