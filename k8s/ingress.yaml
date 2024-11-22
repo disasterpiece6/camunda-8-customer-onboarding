@@ -9,7 +9,7 @@ spec:
   tls:
     - hosts:
         - camunda-8-example-customer-onboarding.labs.phactum.at
-      secretName: insurance-workflow-cert-secret
+      secretName: onboarding-cert-secret
   rules:
     - host: camunda-8-example-customer-onboarding.labs.phactum.at
       http:

@@ -5,7 +5,7 @@ camunda:
       - <default>
     auth:
       client-id: zeebe
-      client-secret: 3hjeaxrh5i
+      client-secret: zecret
       issuer: http://localhost:18080/auth/realms/camunda-platform/protocol/openid-connect/token
     zeebe:
       enabled: true
