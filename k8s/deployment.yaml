@@ -41,9 +41,9 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: onboarding-secret
-                  key: CAMUNDA_CLIENT_AUTH_CLIENT_ID
+                  key: camunda-user
             - name: CAMUNDA_CLIENT_AUTH_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: onboarding-secret
-                  key: CAMUNDA_CLIENT_AUTH_CLIENT_ID
+                  key: camunda-pw
